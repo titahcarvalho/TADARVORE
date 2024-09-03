@@ -19,5 +19,8 @@ typedef struct arvore {
 void Central(TCelula x);
 void PreOrdem(TCelula *x);
 void PosOrdem(TCelula *x);
-TCelula *Pesquisar(TCelula *x, TItem Item);
+TCelula* Pesquisar(TCelula *x, TItem Item);
+TCelula* Minimo(TCelula *x);
+TCelula* Maximo(TCelula *x);
+TCelula* Sucessor(TCelula *x);
 #endif //ARVORE_H

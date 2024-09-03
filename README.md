@@ -1,0 +1,1 @@
+Acompanhamento das funçõe a serem utilizadas em TAD - Arvore

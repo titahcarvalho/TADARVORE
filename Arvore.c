@@ -24,11 +24,39 @@ void PosOrdem(TCelula *x) {
   printf("%d", x->item.chave);
  }
 }
-TCelula *Pesquisar(TCelula *x, TItem Item) {
- if((x == NULL) || (x->item.chave == Item.chave))
+TCelula* Pesquisar(TCelula *x, TItem Item) {
+  if((x == NULL) || (x->item.chave == Item.chave))// o X == NULL significa caso a chave a pesquisar não exista dentro da árvore
+   return x;
+  if(Item.chave < x->item.chave) //se o item que eu quero pesquisar é menor que o que está dentro do nó
+   return Pesquisar(x->esq,Item);
+  else if(Item.chave > x->item.chave)
+    return Pesquisar(x->dir,Item);
+ }
+TCelula* Minimo(TCelula *x) {
+  if( x == NULL)
+     return NULL;
+  while(x->esq != NULL) {
+     x = x->esq;
+  }
   return x;
- if(Item.chave > x->item.chave)
-  return Pesquisar(x->esq,Item);
- else if(Item.chave < x->item.chave)
-   return Pesquisar(x->dir,Item);
+}
+TCelula* Maximo(TCelula *x) {
+  if( x == NULL)
+   return NULL;
+  while(x->dir != NULL) {
+   x = x->dir;
+ }
+ return x;
+}
+TCelula* Sucessor(TCelula *x) {
+ if(x==NULL)
+    return NULL;
+ if(x->dir != NULL)
+    return Minimo(x->dir);
+ TCelula *y = x->pai; //vamos ter que subir p a raiz, chamando pelo pai
+ while(y != NULL && x==y->dir) {
+  x = y;
+  y = y->pai;
+ }
+ return y;
 }
